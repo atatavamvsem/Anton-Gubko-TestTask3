@@ -6,8 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
+
+import static org.examples.RandomGenerator.getRandomInt;
 
 public class BaseElement {
     private static LoggerManager logger = new LoggerManager();
@@ -26,9 +30,13 @@ public class BaseElement {
         findElement().click();
     }
 
-    public void clickSlider(){
+    public void moveSlider(){
         logger.getLoggerMessage(this.getClass().toString(), this.name);
-        findElement().sendKeys(Keys.ARROW_RIGHT);
+        WebElement slider = findElement();
+        int randomInt = getRandomInt();
+        for(int i = 1; i <= randomInt ; i++) {
+            slider.sendKeys(Keys.ARROW_RIGHT);
+        }
     }
 
     public List<WebElement> findElements(){
@@ -43,7 +51,9 @@ public class BaseElement {
 
     public String labelIsDisplayed(){
         //LOGGER.debug("Check is element displayed: {}", this.name);
-        return findElement().getText();
+        String w = findElement().getText();
+        return w;
     }
+
 
 }

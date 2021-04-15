@@ -7,7 +7,8 @@ import org.openqa.selenium.By;
 
 import static org.examples.ResourcesProperties.getDataProperty;
 
-public class JSAlertsPage extends BaseHerokuPage implements Alerts {
+public class JSAlertsPage extends BaseForm {
+    private static Label labelPage = new Label(By.xpath("//div[@id='content']//h3"), "idPage");
     private static Label successMess = new Label(By.xpath("//p[@id = 'result']"), "idSearchPage");
     private static Button jsAlert = new Button(By.xpath("//button[contains(text(),'Alert')]"), "jsAlert");
     private static Button jsConfirm = new Button(By.xpath("//button[contains(text(),'Confirm')]"), "jsConfirm");
@@ -15,7 +16,7 @@ public class JSAlertsPage extends BaseHerokuPage implements Alerts {
 
 
     public JSAlertsPage() {
-        super();
+        super(labelPage,"idPage");
     }
 
     public void clickJSAlert() {

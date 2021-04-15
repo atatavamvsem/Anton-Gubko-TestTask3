@@ -1,11 +1,10 @@
 package eng.heroku;
 
-import domains.forms.BasicAuthPage;
-import domains.forms.HorizontalSlider;
-import domains.forms.JSAlertsPage;
+import domains.forms.*;
 import org.junit.Assert;
 import org.testng.annotations.Test;
 
+import static org.examples.RandomGenerator.valueForCompare;
 import static org.examples.ResourcesProperties.*;
 
 
@@ -21,45 +20,9 @@ public class BasicAuthTests extends BaseTest {
         basicAuthPage.openStartPage(getConfProperty("BasicAuthPageURL"));
         basicAuthPage.passingAuthorizationByAddressBar();
         Assert.assertEquals("it's not main page", basicAuthPage.labelIsDisplayed(), getDataProperty("labelBasicAuthPage"));
-
-       /* mainPage.inputTextSearch();
-        mainPage.clickSearchBtn();
-
-        Assert.assertTrue("it's not search page", searchPage.isDisplayed());
-        Assert.assertTrue(searchPage.checkResultSearch());
-
-        searchPage.viewSortType();
-        searchPage.sortByPriceAsc();
-
-        Assert.assertTrue("wrong sorting", searchPage.checkSortPriceAsc());*/
     }
 
-    @Test
-    public void secTest() {
-        JSAlertsPage javaScriptsAlertsPage = new JSAlertsPage();
 
-        javaScriptsAlertsPage.openStartPage(getConfProperty("JSAlertsPageURL"));
-        Assert.assertTrue("it's wrong page", javaScriptsAlertsPage.pageIsOpened(getDataProperty("JSAlertsPageTitle")));
-
-        javaScriptsAlertsPage.clickJSAlert();
-        javaScriptsAlertsPage.switchToAlert();
-        Assert.assertEquals("it's wrong alert", javaScriptsAlertsPage.getAlertText(), getDataProperty("JSAlertMess"));
-        javaScriptsAlertsPage.clickAlertOK();
-        Assert.assertEquals("it's wrong message", javaScriptsAlertsPage.labelIsDisplayed(), getDataProperty("JSAlertSuccessMess"));
-
-        javaScriptsAlertsPage.clickJSConfirm();
-        javaScriptsAlertsPage.switchToAlert();
-        Assert.assertEquals("it's wrong alert", javaScriptsAlertsPage.getAlertText(), getDataProperty("JSConfirmMess"));
-        javaScriptsAlertsPage.clickAlertOK();
-        Assert.assertEquals("it's wrong message", javaScriptsAlertsPage.labelIsDisplayed(), getDataProperty("JSConfirmSuccessMess"));
-
-        javaScriptsAlertsPage.clickJSPrompt();
-        javaScriptsAlertsPage.switchToAlert();
-        Assert.assertEquals("it's wrong alert", javaScriptsAlertsPage.getAlertText(), getDataProperty("JSPromptMess"));
-        javaScriptsAlertsPage.sendTextToAlert();
-        javaScriptsAlertsPage.clickAlertOK();
-        Assert.assertEquals("it's wrong message", javaScriptsAlertsPage.labelIsDisplayed(), javaScriptsAlertsPage.getMessToCompare());
-    }
 
     @Test
     public void thTest() {
@@ -67,7 +30,47 @@ public class BasicAuthTests extends BaseTest {
 
         horizontalSliderPage.openStartPage(getConfProperty("HrzntlSliderPageURL"));
         Assert.assertTrue("it's wrong page", horizontalSliderPage.pageIsOpened(getDataProperty("HrzntlSliderTitle")));
-        horizontalSliderPage.clickSlider();
+        horizontalSliderPage.moveSlider();
+        Assert.assertEquals("wrong value", Double.toString(horizontalSliderPage.getSliderValue()), Double.toString(valueForCompare));
+    }
+
+    @Test
+    public void forTest() {
+        HoversPage hoversPage = new HoversPage();
+
+        hoversPage.openStartPage(getConfProperty("HoversPageURL"));
+        hoversPage.findUsers();
+
+        System.out.println("d");
+    }
+
+    @Test
+    public void fifthTest() {
+        WindowsPage windowsPage = new WindowsPage("main");
+        NewWindow newWindow1 = new NewWindow("second");
+        NewWindow newWindow2 = new NewWindow("third");
+
+        windowsPage.openStartPage(getConfProperty("WindowsPageURL"));
+        windowsPage.putWindowHandle();
+        windowsPage.clickNewWindow();
+        windowsPage.switchToNewWindow();
+        Assert.assertTrue("it's wrong page", newWindow1.pageIsOpened(getDataProperty("NewWindowTitle")));
+
+        newWindow1.putWindowHandle();
+        windowsPage.switchToWindow();
+        windowsPage.clickNewWindow();
+        windowsPage.switchToNewWindow();
+        Assert.assertTrue("it's wrong page", newWindow1.pageIsOpened(getDataProperty("NewWindowTitle")));
+
+        newWindow2.putWindowHandle();
+        newWindow1.switchToWindow();
+        newWindow2.closeWindow("second");
+
+        windowsPage.switchToWindow();
+        windowsPage.closeWindow("second");
+
+        newWindow2.switchToWindow();
+        System.out.println("d");
     }
 
 

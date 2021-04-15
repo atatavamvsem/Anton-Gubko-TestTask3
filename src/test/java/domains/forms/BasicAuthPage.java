@@ -3,15 +3,19 @@ package domains.forms;
 import domains.elements.Label;
 import org.openqa.selenium.By;
 
-public class BasicAuthPage extends BaseHerokuPage{
-    private static Label labelBasicAuthPage = new Label(By.xpath("//div[@id='content']//p"), "idSearchPage");
+public class BasicAuthPage extends BaseForm{
+    private static Label labelPage = new Label(By.xpath("//div[@id='content']//h3"), "idPage");
+    private static Label messPage = new Label(By.xpath("//div[@id='content']//p"), "messPage");
+
 
     public BasicAuthPage() {
-        super();
+        super(labelPage,"idPage");
     }
 
     public String labelIsDisplayed(){
-        return labelBasicAuthPage.labelIsDisplayed();
+        return messPage.labelIsDisplayed();
     }
+
+
 
 }

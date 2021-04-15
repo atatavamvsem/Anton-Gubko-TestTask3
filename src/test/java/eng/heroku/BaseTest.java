@@ -3,6 +3,7 @@ package eng.heroku;
 import org.examples.LoggerManager;
 import org.examples.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 
@@ -19,7 +20,7 @@ public class BaseTest {
         //instance.getDriver().get(ResourcesProperties.getConfProperty("loginPage"));
     }
 
-    @AfterTest
+    @AfterSuite
     public void closeUp() {
         driver.close();
         driver.quit();

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="1" preserve-order="true" name="Auth">
+        <classes>
+            <class name="eng.heroku.BasicAuthTests">
+                <methods>
+                    <include name="firstTest"/>
+                    <include name="forTest"/>
+                    <include name="thTest"/>
+                    <include name="fifthTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="Alerts">
+        <parameter name="URL" value="http://the-internet.herokuapp.com/javascript_alerts"/>
+        <classes>
+            <class name="eng.heroku.AlertsTest">
+                <methods>
+                    <include name="secTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
