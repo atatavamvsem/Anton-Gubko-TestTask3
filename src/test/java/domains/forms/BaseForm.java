@@ -5,10 +5,8 @@ import domains.elements.Label;
 import org.examples.RandomGenerator;
 import org.examples.ResourcesProperties;
 import org.examples.WebDriverManager;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -42,11 +40,7 @@ public abstract class BaseForm {
         this.handle = handle;
     }
 
-
-
-
-    protected static void moveTo(WebElement element) {
-        new Actions(driver).moveToElement(element).build().perform();
+    public BaseForm() {
     }
 
     public boolean isOpened(String loginPage){
@@ -57,6 +51,8 @@ public abstract class BaseForm {
     public void openStartPage(String loginPage){
         driver.get(loginPage);
     }
+
+
 
     public void passingAuthorizationByAddressBar() {
         driver.get("http://admin:admin@the-internet.herokuapp.com/basic_auth");
@@ -107,7 +103,9 @@ public abstract class BaseForm {
         driver.switchTo().window(pullHadle.get(this.handle));
     }
 
-    public void closeWindow(String second) {
-        driver.close();
+    public String getURL(){
+        return driver.getCurrentUrl();
     }
+
+
 }

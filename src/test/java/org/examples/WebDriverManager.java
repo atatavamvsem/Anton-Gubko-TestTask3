@@ -19,18 +19,22 @@ public class WebDriverManager {
     }
 
     private WebDriver choseBrowser(String browser) {
+        switch (browser){
+            case ("chrome"): {
+                driver = chromeDriverSet.setUp();
+                return driver;
+            }
 
-        if(browser.equals("chrome")){
-            driver = chromeDriverSet.setUp();
-            return driver;
+            case("firefox"):{
+                driver = firefoxDriverSet.setUp();
+                return driver;
+            }
+
+            default:{
+                driver = firefoxDriverSet.setUp();
+                return driver;
+            }
         }
-
-        if(browser.equals("firefox")){
-            driver = firefoxDriverSet.setUp();
-            return driver;
-        }
-
-        throw new NoSuchElementException("not found browser");
     }
 
     public WebDriver getDriver(){

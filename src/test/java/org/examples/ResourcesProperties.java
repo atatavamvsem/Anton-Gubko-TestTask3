@@ -23,7 +23,7 @@ public class ResourcesProperties {
             CONF_PROPERTIES.load(fileConfigInputStream);
             DATA_PROPERTIES.load(fileTestDataInputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new UnsupportedOperationException(e);
         } finally {
             if (fileConfigInputStream != null && fileTestDataInputStream != null)
                 try {

@@ -12,7 +12,7 @@ public class AlertsTest {
 
     @Test
     @Parameters("URL")
-    public void secTest(String url) {
+    public void alertsTest(String url) {
         JSAlertsPage javaScriptsAlertsPage = new JSAlertsPage();
 
         javaScriptsAlertsPage.openStartPage(url);

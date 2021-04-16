@@ -9,42 +9,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HoversPage extends BaseForm {
+
     private static Label labelPage = new Label(By.xpath("//div[@id='content']//h3"), "idPage");
     private static Label listUsers = new Label(By.xpath("//div[@class = 'figure']//img"), "listUsers");
-    private static Label listLinks = new Label(By.xpath("//div[@class = 'figure']//a"), "listLinks");
-    private static List<Label> listLabel = new ArrayList<>();
-    private static  List<Button> listButton;
+    private static Button button;
+    private static Label label;
+    private static Label img;
+    public static String buttonAttribute;
 
-
-    public HoversPage() {
+    public HoversPage(String user1) {
         super(labelPage,"idPage");
+        label = new Label(By.xpath("//*[contains(text(),'" + user1 + "')]"), "listLinks");
+        img = new Label(By.xpath("//*[contains(text(),'" + user1 + "')]//preceding::img[1]"), "listLinks");
+        button = new Button(By.xpath("//*[contains(text(),'" + user1 + "')]//following::a[1]"), "listUsers");
+    }
+
+    public void clickButton(){
+        buttonAttribute = getLinkAttribute("href");
+        button.click();
     }
 
 
-    public void findUsers() {
-        for(WebElement element :listUsers.findElements()){
-            BaseForm.moveTo(element);
-        }
+   public void moveTo() {
+        img.moveTo();
     }
 
-    private List<Label> convertToListLabel(List<WebElement> elements) {
-        List<Label> listLabel = new ArrayList<>();
-        for (WebElement user : elements){
-        user.isDisplayed();
-            listLabel.add((Label) user);
-        }
-        return listLabel;
+    public boolean labelIsDisplayed() {
+        return label.isDisplayed();
     }
 
-    private List<Button> convertToListButton(List<WebElement> elements) {
-        List<Button> listButton = new ArrayList<>();
-        for (WebElement user : elements){
-            listButton.add((Button) user);
-        }
-        return listButton;
+    public boolean buttonIsDisplayed() {
+        return button.isDisplayed();
     }
 
-   /* public void moveTo() {
-        listLabel.get(0).moveTo();
-    }*/
+    public String getLinkAttribute(String href) {
+        return button.getAttribute(href);
+    }
 }

@@ -15,7 +15,8 @@ import static org.examples.RandomGenerator.getRandomInt;
 
 public class BaseElement {
     private static LoggerManager logger = new LoggerManager();
-    private static WebDriver driver = WebDriverManager.getInstance().getDriver();
+    private WebDriverManager instance = WebDriverManager.getInstance();
+    private WebDriver driver;
     public By locator;
     private String name;
 
@@ -40,20 +41,30 @@ public class BaseElement {
     }
 
     public List<WebElement> findElements(){
-        //LOGGER.debug("Finding elements: {}", this.name);
-        return driver.findElements(this.locator);
+        logger.getLoggerMessage("Finding elements: {}", this.name);
+        return instance.getDriver().findElements(this.locator);
     }
 
     public WebElement findElement(){
-        //LOGGER.debug("Finding element: {}", element.name);
-        return driver.findElement(this.locator);
+        logger.getLoggerMessage("Finding elements: {}", this.name);
+        return instance.getDriver().findElement(this.locator);
     }
 
     public String labelIsDisplayed(){
-        //LOGGER.debug("Check is element displayed: {}", this.name);
-        String w = findElement().getText();
-        return w;
+        logger.getLoggerMessage("Check is element displayed: {}", this.name);
+        return findElement().getText();
+    }
+
+    public void moveTo() {
+        new Actions(driver).moveToElement(findElement()).build().perform();
     }
 
 
+    public boolean isDisplayed() {
+        return findElement().isDisplayed();
+    }
+
+    public String getAttribute(String href) {
+        return findElement().getAttribute(href);
+    }
 }
