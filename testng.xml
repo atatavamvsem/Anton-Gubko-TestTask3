@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="1" preserve-order="true" name="Auth">
+        <classes>
+            <class name="eng.heroku.BasicAuthTest">
+                <methods>
+                    <include name="authorizationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="Alerts">
+        <parameter name="URL" value="http://the-internet.herokuapp.com/javascript_alerts"/>
+        <classes>
+            <class name="eng.heroku.AlertsTest">
+                <methods>
+                    <include name="alertsTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="3" preserve-order="true" name="Action">
+        <classes>
+            <class name="eng.heroku.ActionsTest">
+                <methods>
+                    <include name="sliderTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="4" preserve-order="true" name="Hovers">
+        <classes>
+            <class name="eng.heroku.HoversTest">
+                <methods>
+                    <include name="hoversTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="5" preserve-order="true" name="Handles">
+        <classes>
+            <class name="eng.heroku.HandlesTest">
+                <methods>
+                    <include name="handlesTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="5" preserve-order="true" name="Iframe">
+        <classes>
+            <class name="eng.heroku.IframeTest">
+                <methods>
+                    <include name="iframeTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
