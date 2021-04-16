@@ -1,18 +1,17 @@
-package domains.elements;
+package framework.domain.elements;
 
+import framework.examples.LoggerManager;
 import org.openqa.selenium.By;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class TextField extends BaseElement {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TextField.class);
+    private static LoggerManager logger = new LoggerManager();
 
     public TextField(By locator, String name) {
         super(locator, name);
     }
 
     public void sendText(String text) {
-        LOGGER.debug("Sending text: {}", text);
+        logger.getLoggerMessage("Sending text: {}", text);
         findElement().sendKeys(text);
     }
 

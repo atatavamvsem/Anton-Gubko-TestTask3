@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <!--<test verbose="1" preserve-order="true" name="Auth">
+    <test verbose="1" preserve-order="true" name="Auth">
         <classes>
             <class name="eng.heroku.BasicAuthTest">
                 <methods>
@@ -46,8 +46,8 @@
                 </methods>
             </class>
         </classes>
-    </test>-->
-    <test verbose="5" preserve-order="true" name="Handles">
+    </test>
+    <test verbose="5" preserve-order="true" name="Iframe">
         <classes>
             <class name="eng.heroku.IframeTest">
                 <methods>

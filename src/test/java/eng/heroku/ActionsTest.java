@@ -1,12 +1,13 @@
 package eng.heroku;
 
 import domains.forms.HorizontalSlider;
+import framework.tests.BaseTest;
 import org.junit.Assert;
 import org.testng.annotations.Test;
 
-import static org.examples.RandomGenerator.valueForCompare;
-import static org.examples.ResourcesProperties.getConfProperty;
-import static org.examples.ResourcesProperties.getDataProperty;
+import static framework.examples.RandomGenerator.valueForCompare;
+import static framework.examples.ResourcesProperties.getConfProperty;
+import static framework.examples.ResourcesProperties.getDataProperty;
 
 public class ActionsTest extends BaseTest {
 

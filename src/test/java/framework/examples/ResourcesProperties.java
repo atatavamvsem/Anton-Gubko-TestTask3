@@ -1,21 +1,19 @@
-package org.examples;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package framework.examples;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ResourcesProperties {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ResourcesProperties.class);
+    private static LoggerManager logger = new LoggerManager();
     private static FileInputStream fileConfigInputStream;
     private static FileInputStream fileTestDataInputStream;
     private static Properties CONF_PROPERTIES;
     private static Properties DATA_PROPERTIES;
+
     static {
         try {
-            LOGGER.debug("Reading resource files");
+            logger.getLoggerMessage("Reading files");
             fileConfigInputStream = new FileInputStream("src/test/resources/conf.properties");
             fileTestDataInputStream = new FileInputStream("src/test/resources/testData.properties");
             CONF_PROPERTIES = new Properties();
@@ -23,6 +21,7 @@ public class ResourcesProperties {
             CONF_PROPERTIES.load(fileConfigInputStream);
             DATA_PROPERTIES.load(fileTestDataInputStream);
         } catch (IOException e) {
+            logger.getWarningMessage("Error reading");
             throw new UnsupportedOperationException(e);
         } finally {
             if (fileConfigInputStream != null && fileTestDataInputStream != null)
@@ -30,7 +29,10 @@ public class ResourcesProperties {
                     fileConfigInputStream.close();
                     fileTestDataInputStream.close();
                 } catch (IOException e) {
-                    e.printStackTrace(); } } }
+                    e.printStackTrace();
+                }
+        }
+    }
 
     public static String getConfProperty(String key) {
         return CONF_PROPERTIES.getProperty(key);

@@ -1,11 +1,12 @@
 package domains.forms;
 
-import domains.elements.Button;
-import domains.elements.Label;
-import org.examples.RandomGenerator;
+import framework.domain.elements.Button;
+import framework.domain.elements.Label;
+import framework.domain.forms.BaseForm;
+import framework.examples.RandomGenerator;
 import org.openqa.selenium.By;
 
-import static org.examples.ResourcesProperties.getDataProperty;
+import static framework.examples.ResourcesProperties.getDataProperty;
 
 public class JSAlertsPage extends BaseForm {
     private static Label labelPage = new Label(By.xpath("//div[@id='content']//h3"), "idPage");
@@ -16,7 +17,7 @@ public class JSAlertsPage extends BaseForm {
 
 
     public JSAlertsPage() {
-        super(labelPage,"idPage");
+        super(labelPage, "idPage");
     }
 
     public void clickJSAlert() {
@@ -27,7 +28,7 @@ public class JSAlertsPage extends BaseForm {
         jsConfirm.click();
     }
 
-    public String labelIsDisplayed(){
+    public String labelIsDisplayed() {
         return successMess.labelIsDisplayed();
     }
 
@@ -36,7 +37,7 @@ public class JSAlertsPage extends BaseForm {
         jsPrompt.click();
     }
 
-    public String getMessToCompare(){
-        return getDataProperty("JSPromptSuccessMess")+" "+ RandomGenerator.randomString;
+    public String getMessToCompare() {
+        return getDataProperty("JSPromptSuccessMess") + " " + RandomGenerator.randomString;
     }
 }

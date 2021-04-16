@@ -1,9 +1,12 @@
 package eng.heroku;
 
-import domains.forms.*;
+import domains.forms.BasicAuthPage;
+import framework.tests.BaseTest;
 import org.junit.Assert;
 import org.testng.annotations.Test;
-import static org.examples.ResourcesProperties.*;
+
+import static framework.examples.ResourcesProperties.getConfProperty;
+import static framework.examples.ResourcesProperties.getDataProperty;
 
 
 public class BasicAuthTest extends BaseTest {
@@ -12,8 +15,7 @@ public class BasicAuthTest extends BaseTest {
     public void authorizationTest() {
         BasicAuthPage basicAuthPage = new BasicAuthPage();
 
-        basicAuthPage.openStartPage(basicAuthPage.parsingURL(getConfProperty("BasicAuthPageURL"),getDataProperty("user"), getDataProperty("password")));
-        basicAuthPage.passingAuthorizationByAddressBar();
+        basicAuthPage.openStartPage(basicAuthPage.parsingURL(getConfProperty("BasicAuthPageURL"), getDataProperty("user"), getDataProperty("password")));
         Assert.assertEquals("it's not main page", basicAuthPage.labelIsDisplayed(), getDataProperty("labelBasicAuthPage"));
     }
 

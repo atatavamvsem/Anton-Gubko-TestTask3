@@ -2,13 +2,14 @@ package eng.heroku;
 
 import domains.forms.NewWindow;
 import domains.forms.WindowsPage;
+import framework.tests.BaseTest;
 import org.junit.Assert;
 import org.testng.annotations.Test;
 
-import static org.examples.ResourcesProperties.getConfProperty;
-import static org.examples.ResourcesProperties.getDataProperty;
+import static framework.examples.ResourcesProperties.getConfProperty;
+import static framework.examples.ResourcesProperties.getDataProperty;
 
-public class HandlesTest extends BaseTest{
+public class HandlesTest extends BaseTest {
 
     @Test
     public void handlesTest() {
@@ -17,7 +18,7 @@ public class HandlesTest extends BaseTest{
         NewWindow newWindow2 = new NewWindow("third");
 
         windowsPage.openStartPage(getConfProperty("WindowsPageURL"));
-        Assert.assertTrue("it's wrong page", windowsPage.pageIsOpened(getDataProperty("HoversPageTitle")));
+        Assert.assertTrue("it's wrong page", windowsPage.pageIsOpened(getDataProperty("HandlesTitle")));
         windowsPage.putWindowHandle();
         windowsPage.clickNewWindow();
         windowsPage.switchToNewWindow();

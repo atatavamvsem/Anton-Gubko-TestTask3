@@ -1,7 +1,7 @@
 package domains.forms;
 
-import domains.elements.BaseElement;
-import domains.elements.Label;
+import framework.domain.elements.Label;
+import framework.domain.forms.BaseForm;
 import org.openqa.selenium.By;
 
 public class NewWindow extends BaseForm {

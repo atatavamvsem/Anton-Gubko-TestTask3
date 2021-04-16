@@ -1,11 +1,10 @@
 package domains.forms;
 
-import domains.elements.Button;
-import domains.elements.Label;
-import domains.elements.TextField;
+import framework.domain.elements.Button;
+import framework.domain.elements.Label;
+import framework.domain.elements.TextField;
+import framework.domain.forms.BaseForm;
 import org.openqa.selenium.By;
-
-import java.time.temporal.Temporal;
 
 public class HorizontalSlider extends BaseForm {
 
@@ -16,7 +15,7 @@ public class HorizontalSlider extends BaseForm {
     private static Button hrzntlSlider = new Button(By.xpath("//div[@class = 'sliderContainer']//input"), "hrzntlSlider");
 
     public HorizontalSlider() {
-        super(labelPage,"idPage");
+        super(labelPage, "idPage");
     }
 
     public void moveSlider() {

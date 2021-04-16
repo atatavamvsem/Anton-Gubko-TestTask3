@@ -27,7 +27,7 @@
 
 
 
-    <logger name="org.examples" level="info" additivity="false">
+    <logger name="framework.examples" level="info" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </logger>

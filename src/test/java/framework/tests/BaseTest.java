@@ -1,9 +1,10 @@
-package eng.heroku;
+package framework.tests;
 
-import org.examples.LoggerManager;
-import org.examples.WebDriverManager;
+import framework.examples.LoggerManager;
+import framework.examples.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
     private static LoggerManager logger = new LoggerManager();
@@ -12,7 +13,6 @@ public class BaseTest {
 
     @BeforeTest
     public void setUp() {
-        //LOGGER.debug("Start testing");
         logger.getLoggerMessage(this.getClass().toString(), "Start");
         driver = instance.getDriver();
     }
@@ -21,17 +21,19 @@ public class BaseTest {
     public void closeUp() {
         driver.close();
         driver.quit();
-        //LOGGER.debug("The close_up process is completed");
     }
 
-    public void closeWindow(){
+    public void closeWindow() {
         driver.close();
     }
 
-    public void navigateBack(){
+    public void navigateBack() {
         driver.navigate().back();
     }
 
+    public void switchToDefaultContext() {
+        driver.switchTo().defaultContent();
+    }
 
 
 }

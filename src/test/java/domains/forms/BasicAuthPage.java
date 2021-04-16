@@ -1,12 +1,8 @@
 package domains.forms;
 
-import domains.elements.Label;
+import framework.domain.elements.Label;
+import framework.domain.forms.BaseForm;
 import org.openqa.selenium.By;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.examples.ResourcesProperties.getDataProperty;
 
 public class BasicAuthPage extends BaseForm {
     private static Label labelPage = new Label(By.xpath("//div[@id='content']//h3"), "idPage");
@@ -25,10 +21,5 @@ public class BasicAuthPage extends BaseForm {
         String URL = "http://" + user + ":" + password + "@" + basicAuthPageURL.substring(7);
         return URL;
     }
-
-    /*public String createUrlWithAuth(){
-
-    }*/
-
 
 }

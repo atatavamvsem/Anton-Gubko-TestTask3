@@ -1,8 +1,7 @@
-package org.examples;
+package framework.examples;
 
-import org.examples.webDrivers.ChromeDriverSet;
-import org.examples.webDrivers.FirefoxDriverSet;
-import org.openqa.selenium.NoSuchElementException;
+import framework.examples.webDrivers.ChromeDriverSet;
+import framework.examples.webDrivers.FirefoxDriverSet;
 import org.openqa.selenium.WebDriver;
 
 public class WebDriverManager {
@@ -19,28 +18,28 @@ public class WebDriverManager {
     }
 
     private WebDriver choseBrowser(String browser) {
-        switch (browser){
+        switch (browser) {
             case ("chrome"): {
                 driver = chromeDriverSet.setUp();
                 return driver;
             }
 
-            case("firefox"):{
+            case ("firefox"): {
                 driver = firefoxDriverSet.setUp();
                 return driver;
             }
 
-            default:{
+            default: {
                 driver = firefoxDriverSet.setUp();
                 return driver;
             }
         }
     }
 
-    public WebDriver getDriver(){
+    public WebDriver getDriver() {
         if (driver != null) {
             return driver;
-        }else {
+        } else {
             return choseBrowser(ResourcesProperties.getConfProperty("browser"));
         }
     }
